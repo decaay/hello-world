@@ -1,0 +1,24 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: test-service
+    labels:
+        app: test-service
+    namespace: dev
+spec:
+    selector:
+        matchLabels:
+            app: test-service
+    replicas: 1
+    template:
+        metadata:
+            labels:
+                app: test-service
+        spec:
+            containers:
+              -   name: test-service
+                  image: CONTAINER_IMAGE
+                  imagePullPolicy: Always
+                  ports:
+                      -   containerPort: 80
